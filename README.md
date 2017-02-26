@@ -1,8 +1,10 @@
 # sage-cookbook
 
-Sage2 installer. Made for testing sage2 on my raspberry pis.
+[Sage2](http://sage2.sagecommons.org/) installer. Made for testing sage2 on my raspberry pis.
 The *Test Kitchen* is using both Debian and Ubuntu and so it should work
 fine for those systems also.
+
+SAGE2 is the Scalable Amplified Group Environment.
 
 ### What it does
 
@@ -26,3 +28,8 @@ putting in place system services management correctly yet.
 
 See my GIST with
 [helper scripts and notes ](https://gist.github.com/dayne/f6a473bf6929517d66703dcae8ffb53e) for how I'm using this cookbook and my pi.
+
+
+### Credits
+
+This effort and cookbook inspired by the SAAGE2 blog post: [sage2 on raspberry pi 3](http://sage2.sagecommons.org/2016/03/22/sage2-on-raspberry-pi-3/).  
