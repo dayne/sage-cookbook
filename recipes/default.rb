@@ -7,14 +7,24 @@
 # SAGE2 deps
 # NodeJS :
 
-include_recipe 'nodejs'
+if node['platform'] =~ /raspbian/
+  #node.override['nodejs']['install_method'] = 'source'
+  #include_recipe 'nodejs'
+
+  # https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-armv7l.tar.xz
+  # 95efb476886df15cc6586dd26ecc50834a768e347cf95e861461853cfb40fc78
+  # tar xf node-v6.10.0-linux-armv7l.tar.xz -C /usr/local/
+  # ln -s /usr/local/node-v6.10.0-linux-armv7l/bin/* /usr/local/bin
+else
+  include_recipe 'nodejs'
+end
 
 pkgs = %w(ghostscript imagemagick libcap2-bin libnss3-tools
           libimage-exiftool-perl git-core)
 
 case node['platform']
 when /debian/
-  pkgs << 'chromium-browser-l10n'
+#  pkgs << 'chromium-browser-l10n'
 when /raspbian/
 else
   pkgs << 'chromium-browser'
@@ -82,8 +92,9 @@ bash 'sage2-npm_install' do
   cwd install_path
   environment 'HOME' => install_path
   code <<-EOH
-  /usr/bin/npm install
+  npm install
   EOH
+  only_if { File.exist?('/usr/local/bin/npm') || File.exist?('/usr/bin/npm') }
   not_if { ::File.exist?(File.join(install_path, '.npm')) }
 end
 
