@@ -20,7 +20,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[sage-cookbook::default]
+      - recipe[sage::default]
     verifier:
       inspec_tests:
         - test/smoke/default
