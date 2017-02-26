@@ -20,7 +20,7 @@ else
 end
 
 pkgs = %w(ghostscript imagemagick libcap2-bin libnss3-tools
-          libimage-exiftool-perl git-core)
+          libimage-exiftool-perl git-core libaudio libaudio-dev)
 
 case node['platform']
 when /debian/
@@ -29,6 +29,7 @@ when /raspbian/
 else
   pkgs << 'chromium-browser'
 end
+
 package pkgs
 
 repo = node['sage2']['repository']       # https://bitbucket.org/sage2/sage2.git
